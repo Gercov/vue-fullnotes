@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="header container">
     <b-navbar>
       <template #brand>
         <b-navbar-item class="logo"> FullNotes </b-navbar-item>
@@ -20,6 +20,10 @@ export default {
 
 <style scoped>
   .logo {
-  font-size: 30px;
-}
+    font-size: 30px;
+  }
+
+  .header {
+    margin-bottom: 100px;
+  }
 </style>
