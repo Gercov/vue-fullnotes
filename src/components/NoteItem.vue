@@ -1,13 +1,17 @@
 <template>
   <div class="content is-medium block box">
-    <h1>Hello World</h1>
+    <h1>{{ headerNote }}</h1>
     <p>
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla accumsan,
-      metus ultrices eleifend gravida, nulla nunc varius lectus, nec rutrum
-      justo nibh eu lectus. Ut vulputate semper dui. Fusce erat odio,
-      sollicitudin vel erat vel, interdum mattis neque.
+      {{ mainNote }}
     </p>
-    <h2>Second level</h2>
+    <div class="level is-mobile">
+      <div class="is-size-7">
+        {{ dateNote | date('datetime') }}
+      </div>
+      <b-button type="button is-danger is-small-mobile" outlined>Удалить</b-button>
+    </div>
+
+    <!-- <h2>Second level</h2>
     <p>
       Curabitur accumsan turpis pharetra
       <strong>augue tincidunt</strong> blandit. Quisque condimentum maximus mi,
@@ -22,13 +26,14 @@
         Aliquam nec felis in sapien venenatis viverra fermentum nec lectus.
       </li>
       <li>Ut non enim metus.</li>
-    </ul>
+    </ul> -->
   </div>
 </template>
 
 <script>
 export default {
-  name: 'NoteItem'
+  name: "NoteItem",
+  props: ["headerNote", "mainNote", "dateNote"],
 };
 </script>
 

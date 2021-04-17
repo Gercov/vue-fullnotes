@@ -8,7 +8,7 @@ import "./registerServiceWorker";
 import store from "./store";
 
 Vue.config.productionTip = false;
-Vue.filter(dateFilter);
+Vue.filter('date', dateFilter);
 Vue.use(Buefy);
 
 new Vue({

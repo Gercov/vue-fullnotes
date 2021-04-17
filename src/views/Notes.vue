@@ -25,20 +25,26 @@
           >
         </div>
       </form>
-      <div class="notes">
+      <div v-if="notes.length">
         <div class="title is-size-4-mobile is-2">Ваши заметки:</div>
-        <note-item />
+          <note-item
+            v-for="item in notes"
+            :key="item.id"
+            :headerNote="item.header"
+            :mainNote="item.main" 
+            :dateNote="item.date"
+          />
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import NoteItem from "@/components/NoteItem"
+import NoteItem from "@/components/NoteItem";
 
 export default {
   components: {
-    NoteItem
+    NoteItem,
   },
   data() {
     return {
@@ -53,9 +59,18 @@ export default {
       const note = {
         header: this.header,
         main: this.main,
-        date: Date.now()
+        date: new Date(),
+        id: Date.now(),
       };
-      console.log(note);
+
+      this.$store.dispatch("createNote", note);
+
+      this.header = this.main = ""
+    },
+  },
+  computed: {
+    notes() {
+      return this.$store.getters.notes;
     },
   },
 };
