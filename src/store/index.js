@@ -5,7 +5,8 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    notes: JSON.parse(localStorage.notes || '[]')
+    notes: JSON.parse(localStorage.notes || '[]'),
+    todos: JSON.parse(localStorage.todos || '[]')
   },
   mutations: {
     createNote(state, note) {
@@ -15,6 +16,14 @@ export default new Vuex.Store({
     deleteNote(state, id) {
       state.notes = state.notes.filter(item => item.id != id)
       localStorage.setItem('notes', JSON.stringify(state.notes))
+    },
+    deleteTodo(state, id) {
+      state.todos = state.todos.filter(item => item.id != id)
+      localStorage.setItem('todos', JSON.stringify(state.todos))
+    },
+    createTodo(state, todo) {
+      state.todos.unshift(todo);
+      localStorage.setItem('todos', JSON.stringify(state.todos))
     }
   },
   actions: {
@@ -23,9 +32,16 @@ export default new Vuex.Store({
     },
     deleteNote({commit}, id) {
       commit('deleteNote', id)
+    },
+    createTodo({commit}, todo) {
+      commit('createTodo', todo)
+    },
+    deleteTodo({commit}, id) {
+      commit('deleteTodo', id)
     }
   },
   getters: {
-    notes: s => s.notes
+    notes: s => s.notes,
+    todos: s => s.todos,
   },
 });

@@ -14,23 +14,27 @@
         >
       </div>
     </form>
-    <!-- <div v-if="notes.length">
-      <div class="title is-size-4-mobile is-2">Ваши заметки:</div>
-      <note-item
-        v-for="item in notes"
+    <div v-if="todos.length">
+      <div class="title is-size-4-mobile is-2">Ваши задачи:</div>
+      <todo-item
+        v-for="item in todos"
         :key="item.id"
-        :headerNote="item.header"
-        :mainNote="item.main"
-        :dateNote="item.date"
-        @delete="deleteNote(item.id)"
+        :headerTodo="item.todoName"
+        :dateTodo="item.date"
+        @delete="deleteTodo(item.id)"
       >
-      </note-item>
-    </div> -->
+      </todo-item>
+    </div>
   </div>
 </template>
 
 <script>
+import TodoItem from '@/components/TodoItem.vue';
+
 export default {
+  components: {
+    TodoItem
+  },
   data() {
     return {
       todoName: "",
@@ -38,16 +42,32 @@ export default {
   },
   methods: {
     submitTodoHandler() {
-      if(!this.todoName.length) return
+      if (!this.todoName.length) return;
 
       const todo = {
         todoName: this.todoName,
         id: Date.now(),
+        date: new Date(),
         active: true,
-      }
+      };
 
-      console.log(todo)
+      this.$store.dispatch("createTodo", todo);
+      this.todoName = ""
+    },
+    deleteTodo(id) {
+      this.$store.dispatch("deleteTodo", id)
     }
-  }
+  },
+  computed: {
+    todos() {
+      return this.$store.getters.todos;
+    },
+  },
 };
 </script>
+
+<style scoped>
+.form {
+  margin-bottom: 150px;
+}
+</style>

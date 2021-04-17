@@ -80,12 +80,4 @@ export default {
 .form {
   margin-bottom: 150px;
 }
-
-.chat-bubble {
-  white-space: pre !important;
-  max-width: 10% !important;
-  padding: 2px 9px 2px 9px !important;
-  height: auto !important;
-  text-align: left !important;
-}
 </style> 
