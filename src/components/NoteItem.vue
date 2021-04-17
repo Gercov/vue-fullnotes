@@ -1,6 +1,6 @@
 <template>
   <div class="content is-medium block box">
-    <h1>{{ headerNote }}</h1>
+    <h1 class="is-size-4-mobile is-size-3">{{ headerNote }}</h1>
     <p>
       {{ mainNote }}
     </p>
@@ -8,7 +8,7 @@
       <div class="is-size-7">
         {{ dateNote | date('datetime') }}
       </div>
-      <b-button type="button is-danger is-small-mobile" outlined>Удалить</b-button>
+      <b-button @click="$emit('delete')" type="button is-danger is-small-mobile" outlined>Удалить</b-button>
     </div>
 
     <!-- <h2>Second level</h2>

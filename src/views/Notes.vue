@@ -4,7 +4,7 @@
       class="column is-10-mobile is-offset-1-mobile is-10-touch is-offset-1-touch is-8 is-offset-2"
     >
       <form @submit.prevent="submitHandler" class="form">
-        <div class="title is-size-4-mobile is-2">Создайте свою заметку:</div>
+        <div class="title is-size-4-mobile is-2">Создайте новую заметку:</div>
         <div class="column box">
           <b-field label="Заголовок">
             <b-input
@@ -33,6 +33,7 @@
             :headerNote="item.header"
             :mainNote="item.main" 
             :dateNote="item.date"
+            @delete="deleteNote(item.id)"
           />
       </div>
     </div>
@@ -67,6 +68,9 @@ export default {
 
       this.header = this.main = ""
     },
+    deleteNote(id) {
+      this.$store.dispatch("deleteNote", id)
+    }
   },
   computed: {
     notes() {

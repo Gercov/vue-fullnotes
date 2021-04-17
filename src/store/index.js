@@ -10,13 +10,19 @@ export default new Vuex.Store({
   mutations: {
     createNote(state, note) {
       state.notes.unshift(note);
-
+      localStorage.setItem('notes', JSON.stringify(state.notes))
+    },
+    deleteNote(state, id) {
+      state.notes = state.notes.filter(item => item.id != id)
       localStorage.setItem('notes', JSON.stringify(state.notes))
     }
   },
   actions: {
     createNote({commit}, note) {
       commit('createNote', note);
+    },
+    deleteNote({commit}, id) {
+      commit('deleteNote', id)
     }
   },
   getters: {
