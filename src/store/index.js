@@ -5,7 +5,7 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    notes: JSON.parse(localStorage.getItem('notes') || '[]')
+    notes: JSON.parse(localStorage.notes || '[]')
   },
   mutations: {
     createNote(state, note) {
@@ -28,5 +28,4 @@ export default new Vuex.Store({
   getters: {
     notes: s => s.notes
   },
-  modules: {},
 });

@@ -1,12 +1,22 @@
 <template>
-  <div class="header container ">
+  <div class="header container">
     <b-navbar>
       <template #brand>
-        <b-navbar-item class="logo is-size-5-mobile"> FullNotes </b-navbar-item>
+        <b-navbar-item
+          tag="router-link"
+          :to="{ name: 'home' }"
+          class="logo is-size-5-mobile"
+        >
+          FullNotes
+        </b-navbar-item>
       </template>
       <template #end>
-        <b-navbar-item href="#"> Notes </b-navbar-item>
-        <b-navbar-item href="#"> To-Do </b-navbar-item>
+        <b-navbar-item tag="router-link" :to="{ name: 'notes' }">
+          Notes
+        </b-navbar-item>
+        <b-navbar-item tag="router-link" :to="{ name: 'todos' }">
+          To-Do
+        </b-navbar-item>
         <b-navbar-item href="#"> All </b-navbar-item>
       </template>
     </b-navbar>
