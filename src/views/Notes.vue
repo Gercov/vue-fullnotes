@@ -59,13 +59,12 @@ export default {
 
       const note = {
         header: this.header,
-        main: this.main,
+        main: this.main.split('\n').join('<br>'),
         date: new Date(),
         id: Date.now(),
       };
 
       this.$store.dispatch("createNote", note);
-
       this.header = this.main = ""
     },
     deleteNote(id) {
