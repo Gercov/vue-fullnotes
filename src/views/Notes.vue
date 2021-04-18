@@ -25,12 +25,12 @@
     <div v-if="notes.length">
       <div class="title is-size-4-mobile is-2">Ваши заметки:</div>
       <note-item
-        v-for="item in notes"
-        :key="item.id"
+        v-for="(item, idx) in notes"
+        :key="idx"
         :headerNote="item.header"
         :mainNote="item.main"
         :dateNote="item.date"
-        @delete="deleteNote(item.id)"
+        :idNote="item.id"
       >
       </note-item>
     </div>
@@ -64,9 +64,6 @@ export default {
       this.$store.dispatch("createNote", note);
       this.header = this.main = "";
     },
-    deleteNote(id) {
-      this.$store.dispatch("deleteNote", id);
-    },
   },
   computed: {
     notes() {
@@ -80,4 +77,4 @@ export default {
 .form {
   margin-bottom: 130px;
 }
-</style> 
+</style>

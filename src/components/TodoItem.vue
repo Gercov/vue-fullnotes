@@ -14,7 +14,7 @@
         {{ dateTodo | formatDate("datetime") }}
       </div>
       <b-button
-        @click="$emit('delete')"
+        @click="deleteTodo()"
         type="button is-danger is-small-mobile"
         outlined
         >Удалить</b-button
@@ -35,13 +35,19 @@ export default {
   computed: {
     status: {
       get: function () {
-        let todos = this.$store.getters.todos
-        return !todos[this.index].active
+        let todos = this.$store.getters.todos;
+        return !todos[this.index].active;
       },
       set: function () {
         this.$store.dispatch("changeTodoStatus", this.id);
-      }
-    }
-  }
+      },
+    },
+  },
+  methods: {
+    deleteTodo() {
+      console.log('Todo: ', this.id)
+      this.$store.dispatch("deleteTodo", this.id);
+    },
+  },
 };
 </script>

@@ -24,7 +24,6 @@
         :id="item.id"
         :status="item.active"
         :index="idx"
-        @delete="deleteTodo(item.id)"
       >
       </todo-item>
     </div>
@@ -32,11 +31,11 @@
 </template>
 
 <script>
-import TodoItem from '@/components/TodoItem.vue';
+import TodoItem from "@/components/TodoItem.vue";
 
 export default {
   components: {
-    TodoItem
+    TodoItem,
   },
   data() {
     return {
@@ -55,11 +54,8 @@ export default {
       };
 
       this.$store.dispatch("createTodo", todo);
-      this.todoName = ""
+      this.todoName = "";
     },
-    deleteTodo(id) {
-      this.$store.dispatch("deleteTodo", id)
-    }
   },
   computed: {
     todos() {
@@ -71,6 +67,6 @@ export default {
 
 <style scoped>
 .form {
-  margin-bottom: 150px;
+  margin-bottom: 130px;
 }
 </style>

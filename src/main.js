@@ -7,14 +7,13 @@ import store from "./store";
 import "buefy/dist/buefy.css";
 import "./registerServiceWorker";
 
-
 Vue.config.productionTip = false;
-Vue.filter('formatDate', dateFilter);
-Vue.use(Navbar)
-Vue.use(Input)
-Vue.use(Button)
-Vue.use(Checkbox)
-Vue.use(Field)
+Vue.filter("formatDate", dateFilter);
+Vue.use(Navbar);
+Vue.use(Input);
+Vue.use(Button);
+Vue.use(Checkbox);
+Vue.use(Field);
 
 new Vue({
   router,

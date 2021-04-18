@@ -5,21 +5,41 @@ Vue.use(VueRouter);
 
 const routes = [
   {
+    path: "/",
+    name: "home",
+    meta: { title: "Home"},
+    component: () => import("@/views/Home.vue")
+  },
+  {
     path: "/notes",
     name: "notes",
+    meta: { title: "Notes" },
     component: () => import("@/views/Notes.vue"),
   },
   {
     path: "/todos",
     name: "todos",
-    component: () => import("@/views/Todos.vue")
-  }
+    meta: { title: "To-Do" },
+    component: () => import("@/views/Todos.vue"),
+  },
+  {
+    path: "/all",
+    name: "allitems",
+    meta: { title: "All Items" },
+    component: () => import("@/views/AllItemsPage.vue"),
+  },
 ];
 
 const router = new VueRouter({
   mode: "history",
   base: process.env.BASE_URL,
   routes,
+});
+
+router.beforeEach((to, from, next) => {
+  document.title = to.meta.title;
+
+  next();
 });
 
 export default router;

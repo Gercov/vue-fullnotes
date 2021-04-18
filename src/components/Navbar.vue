@@ -17,7 +17,7 @@
         <b-navbar-item tag="router-link" :to="{ name: 'todos' }">
           To-Do
         </b-navbar-item>
-        <b-navbar-item href="#"> All </b-navbar-item>
+        <b-navbar-item tag="router-link" :to="{ name: 'allitems' }"> All </b-navbar-item>
       </template>
     </b-navbar>
   </div>

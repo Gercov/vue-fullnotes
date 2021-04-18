@@ -7,7 +7,7 @@
         {{ dateNote | formatDate("datetime") }}
       </div>
       <b-button
-        @click="$emit('delete')"
+        @click="deleteNote()"
         type="button is-danger is-small-mobile"
         outlined
         >Удалить</b-button
@@ -19,9 +19,14 @@
 <script>
 export default {
   name: "NoteItem",
-  props: ["headerNote", "mainNote", "dateNote"],
+  props: ["headerNote", "mainNote", "idNote", "dateNote"],
+  methods: {
+    deleteNote() {
+      console.log('Note: ', this.idNote)
+      this.$store.dispatch("deleteNote", this.idNote);
+    },
+  },
 };
 </script>
 
-<style>
-</style>
+<style></style>
