@@ -4,7 +4,7 @@
       <template #brand>
         <b-navbar-item
           tag="router-link"
-          :to="{ name: 'home' }"
+          :to="{ name: 'info' }"
           class="logo is-size-5-mobile"
         >
           FullNotes
@@ -17,7 +17,12 @@
         <b-navbar-item tag="router-link" :to="{ name: 'todos' }">
           To-Do
         </b-navbar-item>
-        <b-navbar-item tag="router-link" :to="{ name: 'allitems' }"> All </b-navbar-item>
+        <b-navbar-item tag="router-link" :to="{ name: 'allitems' }">
+          All
+        </b-navbar-item>
+        <b-navbar-item tag="router-link" :to="{ name: 'info' }">
+          Info
+        </b-navbar-item>
       </template>
     </b-navbar>
   </div>

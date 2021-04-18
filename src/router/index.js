@@ -6,12 +6,6 @@ Vue.use(VueRouter);
 const routes = [
   {
     path: "/",
-    name: "home",
-    meta: { title: "Home"},
-    component: () => import("@/views/Home.vue")
-  },
-  {
-    path: "/notes",
     name: "notes",
     meta: { title: "Notes", name: "note-item" },
     component: () => import("@/views/Notes.vue"),
@@ -27,6 +21,12 @@ const routes = [
     name: "allitems",
     meta: { title: "All Items" },
     component: () => import("@/views/AllItemsPage.vue"),
+  },
+  {
+    path: "/info",
+    name: "info",
+    meta: { title: "info" },
+    component: () => import("@/views/info.vue")
   },
 ];
 
