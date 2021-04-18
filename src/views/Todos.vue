@@ -19,10 +19,9 @@
       <todo-item
         v-for="(item, idx) in todos"
         :key="item.id"
-        :headerTodo="item.todoName"
-        :dateTodo="item.date"
+        :header="item.header"
+        :date="item.date"
         :id="item.id"
-        :status="item.active"
         :index="idx"
       >
       </todo-item>
@@ -47,10 +46,11 @@ export default {
       if (!this.todoName.length) return;
 
       const todo = {
-        todoName: this.todoName,
+        header: this.todoName,
         id: Date.now(),
         date: new Date(),
         active: true,
+        component: this.$route.meta.name,
       };
 
       this.$store.dispatch("createTodo", todo);

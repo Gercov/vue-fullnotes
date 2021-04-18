@@ -1,26 +1,26 @@
 <template>
   <div>
-    <div class="title is-size-4-mobile is-2">Все ваши листы:</div>
-    <note-item
-      v-for="(item, idx) in AllNotes"
-      :key="idx"
-      :headerNote="item.header"
-      :mainNote="item.main"
-      :dateNote="item.date"
-      :idNote="item.id"
-    >
-    </note-item>
-    <todo-item
-      v-for="(item, idx) in AllTodos"
-      :key="item.id"
-      :headerTodo="item.todoName"
-      :dateTodo="item.date"
-      :id="item.id"
-      :status="item.active"
-      :index="idx"
-      @delete="deleteTodo(item.id)"
-    >
-    </todo-item>
+    <div v-if="AllItems.length">
+      <div class="title is-size-4-mobile is-2">Все ваши листы:</div>
+      <components
+        v-for="item in AllItems"
+        :is="item.component"
+        :key="item.id"
+        :header="item.header"
+        :main="item.main"
+        :date="item.date"
+        :id="item.id"
+      >
+      </components>
+    </div>
+    <div v-else>
+      <div class="content is-medium">
+        <h1>У вас пока нет заметок:(</h1>
+        <p>
+          Попробуйте создать свою первую <router-link :to="{ name: 'notes' }">заметку</router-link> или задачу)
+        </p>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -35,12 +35,17 @@ export default {
     NoteItem,
   },
   computed: {
-    AllTodos() {
-      const ActiveTodos = this.$store.getters.todos.filter(todo => todo.active === true)
-      return ActiveTodos
-    },
-    AllNotes() {
-      return this.$store.getters.notes;
+    AllItems() {
+      let todos = this.$store.getters.todos.filter(
+        (item) => item.active == true
+      );
+      let notes = this.$store.getters.notes;
+      let allItems = [...notes, ...todos];
+      allItems.filter((item) => item.active == true);
+      let sortArr = allItems.sort((a, b) => {
+        return b.id - a.id;
+      });
+      return sortArr;
     },
   },
 };

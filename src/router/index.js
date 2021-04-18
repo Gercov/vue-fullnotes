@@ -13,13 +13,13 @@ const routes = [
   {
     path: "/notes",
     name: "notes",
-    meta: { title: "Notes" },
+    meta: { title: "Notes", name: "note-item" },
     component: () => import("@/views/Notes.vue"),
   },
   {
     path: "/todos",
     name: "todos",
-    meta: { title: "To-Do" },
+    meta: { title: "To-Do", name: "todo-item" },
     component: () => import("@/views/Todos.vue"),
   },
   {

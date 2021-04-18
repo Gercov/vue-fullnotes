@@ -27,10 +27,10 @@
       <note-item
         v-for="(item, idx) in notes"
         :key="idx"
-        :headerNote="item.header"
-        :mainNote="item.main"
-        :dateNote="item.date"
-        :idNote="item.id"
+        :header="item.header"
+        :main="item.main"
+        :date="item.date"
+        :id="item.id"
       >
       </note-item>
     </div>
@@ -59,6 +59,7 @@ export default {
         main: this.main.split("\n").join("<br>"),
         date: new Date(),
         id: Date.now(),
+        component: this.$route.meta.name,
       };
 
       this.$store.dispatch("createNote", note);
