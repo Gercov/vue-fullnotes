@@ -1,5 +1,9 @@
 <template>
   <div>
+    <div v-if="helperSeen" class="notification is-info is-light" >
+      <button class="delete" @click="disableHelper"></button>
+      Все свои заметки и задачи вы можете посмотреть во вкладке <strong>All</strong>
+    </div>
     <form @submit.prevent="submitNotesHandler" class="form">
       <div class="title is-size-4-mobile is-2">Создайте новую заметку:</div>
       <div class="column box">
@@ -48,6 +52,7 @@ export default {
     return {
       header: "",
       main: "",
+      helperSeen: true,
     };
   },
   methods: {
@@ -65,12 +70,20 @@ export default {
       this.$store.dispatch("createNote", note);
       this.header = this.main = "";
     },
+    disableHelper() {
+      this.helperSeen = localStorage.ALL_HELPER = false
+    }
   },
   computed: {
     notes() {
       return this.$store.getters.notes;
-    },
+    }
   },
+  mounted() {
+    if(localStorage.ALL_HELPER) {
+      this.helperSeen = JSON.parse(localStorage.ALL_HELPER)
+    } 
+  }
 };
 </script>
 

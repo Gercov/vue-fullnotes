@@ -17,7 +17,9 @@
       <div class="content is-medium">
         <h1>У вас пока нет заметок:(</h1>
         <p>
-          Попробуйте создать свою первую <router-link :to="{ name: 'notes' }">заметку</router-link> или задачу)
+          Попробуйте создать свою первую
+          <router-link :to="{ name: 'notes' }">заметку</router-link> или
+          <router-link :to="{ name: 'todos' }">задачу</router-link>
         </p>
       </div>
     </div>
