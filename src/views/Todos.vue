@@ -17,10 +17,13 @@
     <div v-if="todos.length">
       <div class="title is-size-4-mobile is-2">Ваши задачи:</div>
       <todo-item
-        v-for="item in todos"
+        v-for="(item, idx) in todos"
         :key="item.id"
         :headerTodo="item.todoName"
         :dateTodo="item.date"
+        :id="item.id"
+        :status="item.active"
+        :index="idx"
         @delete="deleteTodo(item.id)"
       >
       </todo-item>

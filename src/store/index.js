@@ -24,6 +24,11 @@ export default new Vuex.Store({
     createTodo(state, todo) {
       state.todos.unshift(todo);
       localStorage.setItem('todos', JSON.stringify(state.todos))
+    },
+    changeTodoStatus(state, id) {
+      let index = state.todos.findIndex(item => item.id == id)
+      Vue.set(state.todos[index], 'active', !state.todos[index].active)
+      localStorage.setItem('todos', JSON.stringify(state.todos))
     }
   },
   actions: {
@@ -38,6 +43,9 @@ export default new Vuex.Store({
     },
     deleteTodo({commit}, id) {
       commit('deleteTodo', id)
+    },
+    changeTodoStatus({commit}, id) {
+      commit('changeTodoStatus', id)
     }
   },
   getters: {

@@ -1,12 +1,11 @@
 <template>
-  <div class="content is-medium block box"
-    :class="{'has-background-light': active}"
+  <div
+    class="content is-medium block box"
+    :class="{ 'has-background-light': completed }"
   >
     <div>
       <div class="level-left mb-2">
-        <b-checkbox v-model="active">
-          {{ checkbox }}
-        </b-checkbox>
+        <b-checkbox v-model="completed"> </b-checkbox>
         <h1 class="is-size-4-mobile is-size-3 m-0">{{ headerTodo }}</h1>
       </div>
     </div>
@@ -27,10 +26,16 @@
 <script>
 export default {
   name: "TodoItem",
-  props: ["headerTodo", "dateTodo"],
+  props: ["headerTodo", "dateTodo", "id", "active", "index"],
   data() {
     return {
-      active: false,
+      completed: false,
+    };
+  },
+  watch: {
+    completed: () => {
+      console.log(JSON.parse(localStorage.todos[0]))
+      // JSON.stringify(localStorage.todos[this.index].active = val)
     }
   }
 };
