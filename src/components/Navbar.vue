@@ -35,6 +35,6 @@ export default {
 }
 
 .header {
-  margin-bottom: 100px;
+  margin-bottom: 90px;
 }
 </style>

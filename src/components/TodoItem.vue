@@ -1,11 +1,11 @@
 <template>
   <div
     class="content is-medium block box"
-    :class="{ 'has-background-light': completed }"
+    :class="{ 'has-background-light': status }"
   >
     <div>
       <div class="level-left mb-2">
-        <b-checkbox v-model="completed"> </b-checkbox>
+        <b-checkbox v-model="status"></b-checkbox>
         <h1 class="is-size-4-mobile is-size-3 m-0">{{ headerTodo }}</h1>
       </div>
     </div>
@@ -32,10 +32,15 @@ export default {
       completed: false,
     };
   },
-  watch: {
-    completed: () => {
-      console.log(JSON.parse(localStorage.todos[0]))
-      // JSON.stringify(localStorage.todos[this.index].active = val)
+  computed: {
+    status: {
+      get: function () {
+        let todos = this.$store.getters.todos
+        return !todos[this.index].active
+      },
+      set: function () {
+        this.$store.dispatch("changeTodoStatus", this.id);
+      }
     }
   }
 };
