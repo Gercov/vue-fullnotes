@@ -1,9 +1,8 @@
 <template>
   <div class="content is-large">
-    <h1>Vue-FullNotes</h1>
+    <h1>FullNotes</h1>
     <p>
-      Этот сайт был создан для преобретения навыка использовангия Vuex, Vue
-      Router
+      В дальнейшем тут будет какой-то красивый текст
     </p>
   </div>
 </template>
