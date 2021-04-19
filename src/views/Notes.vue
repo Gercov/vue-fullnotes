@@ -1,8 +1,9 @@
 <template>
   <div>
-    <div v-if="helperSeen" class="notification is-info is-light" >
+    <div v-if="helperSeen" class="notification is-info is-light">
       <button class="delete" @click="disableHelper"></button>
-      Все свои заметки и задачи вы можете посмотреть во вкладке <strong>All</strong>
+      Все свои заметки и задачи вы можете посмотреть во вкладке
+      <strong>All</strong>
     </div>
     <form @submit.prevent="submitNotesHandler" class="form">
       <div class="title is-size-4-mobile is-2">Создайте новую заметку:</div>
@@ -15,7 +16,7 @@
         </b-field>
         <b-field label="Основной текст">
           <b-input
-            v-model="main"
+            v-model.trim="main"
             maxlength="1000"
             type="textarea"
             placeholder="Введите сюда любой текст"
@@ -71,19 +72,19 @@ export default {
       this.header = this.main = "";
     },
     disableHelper() {
-      this.helperSeen = localStorage.ALL_HELPER = false
-    }
+      this.helperSeen = localStorage.ALL_HELPER = false;
+    },
   },
   computed: {
     notes() {
       return this.$store.getters.notes;
-    }
+    },
   },
   mounted() {
-    if(localStorage.ALL_HELPER) {
-      this.helperSeen = JSON.parse(localStorage.ALL_HELPER)
-    } 
-  }
+    if (localStorage.ALL_HELPER) {
+      this.helperSeen = JSON.parse(localStorage.ALL_HELPER);
+    }
+  },
 };
 </script>
 

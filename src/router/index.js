@@ -26,7 +26,7 @@ const routes = [
     path: "/info",
     name: "info",
     meta: { title: "info" },
-    component: () => import("@/views/info.vue")
+    component: () => import("@/views/info.vue"),
   },
 ];
 
@@ -38,7 +38,6 @@ const router = new VueRouter({
 
 router.beforeEach((to, from, next) => {
   document.title = to.meta.title;
-
   next();
 });
 

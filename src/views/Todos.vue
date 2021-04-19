@@ -17,12 +17,11 @@
     <div v-if="todos.length">
       <div class="title is-size-4-mobile is-2">Ваши задачи:</div>
       <todo-item
-        v-for="(item, idx) in todos"
+        v-for="item in todos"
         :key="item.id"
         :header="item.header"
         :date="item.date"
         :id="item.id"
-        :index="idx"
       >
       </todo-item>
     </div>
