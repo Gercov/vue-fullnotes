@@ -30,6 +30,7 @@
 
 <script>
 import TodoItem from "@/components/TodoItem.vue";
+import { mapGetters } from "vuex";
 
 export default {
   components: {
@@ -57,9 +58,9 @@ export default {
     },
   },
   computed: {
-    todos() {
-      return this.$store.getters.todos;
-    },
+    ...mapGetters({
+      todos: "todos"
+    }),
   },
 };
 </script>

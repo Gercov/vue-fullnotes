@@ -51,5 +51,15 @@ export default new Vuex.Store({
   getters: {
     notes: (s) => s.notes,
     todos: (s) => s.todos,
+    allItems: state => {
+      let todos = state.todos.filter(item => item.active == true);
+      let notes = state.notes;
+      let allItems = [...notes, ...todos];
+      allItems.filter(item => item.active == true);
+      let sortArr = allItems.sort((a, b) => {
+        return b.id - a.id;
+      });
+      return sortArr;
+    }
   },
 });

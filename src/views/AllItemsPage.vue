@@ -29,6 +29,7 @@
 <script>
 import TodoItem from "@/components/TodoItem.vue";
 import NoteItem from "@/components/NoteItem.vue";
+import { mapGetters } from "vuex";
 
 export default {
   name: "AllItems",
@@ -37,18 +38,9 @@ export default {
     NoteItem,
   },
   computed: {
-    AllItems() {
-      let todos = this.$store.getters.todos.filter(
-        (item) => item.active == true
-      );
-      let notes = this.$store.getters.notes;
-      let allItems = [...notes, ...todos];
-      allItems.filter((item) => item.active == true);
-      let sortArr = allItems.sort((a, b) => {
-        return b.id - a.id;
-      });
-      return sortArr;
-    },
+    ...mapGetters({
+      AllItems: "allItems"
+    }),
   },
 };
 </script>

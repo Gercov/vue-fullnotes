@@ -1,10 +1,12 @@
 <template>
   <div>
-    <div v-if="helperSeen" class="notification is-info is-light">
-      <button class="delete" @click="disableHelper"></button>
-      Все свои заметки и задачи вы можете посмотреть во вкладке
-      <strong>All</strong>
-    </div>
+    <transition name="fade">
+      <div v-if="helperSeen" class="notification is-info is-light">
+        <button class="delete" @click="disableHelper"></button>
+        Все свои заметки и задачи вы можете посмотреть во вкладке
+        <strong>All</strong>
+      </div>
+    </transition>
     <form @submit.prevent="submitNotesHandler" class="form">
       <div class="title is-size-4-mobile is-2">Создайте новую заметку:</div>
       <div class="column box">
@@ -44,6 +46,7 @@
 
 <script>
 import NoteItem from "@/components/NoteItem";
+import { mapGetters } from "vuex";
 
 export default {
   components: {
@@ -76,11 +79,11 @@ export default {
     },
   },
   computed: {
-    notes() {
-      return this.$store.getters.notes;
-    },
+    ...mapGetters({
+      notes: "notes"
+    }),
   },
-  mounted() {
+  created() {
     if (localStorage.ALL_HELPER) {
       this.helperSeen = JSON.parse(localStorage.ALL_HELPER);
     }

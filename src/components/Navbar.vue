@@ -11,7 +11,7 @@
         </b-navbar-item>
       </template>
       <template #end>
-        <b-navbar-item tag="router-link" :to="{ name: 'notes' }">
+        <b-navbar-item tag="router-link" :to="{ name: 'notes' }" :exact="true">
           Notes
         </b-navbar-item>
         <b-navbar-item tag="router-link" :to="{ name: 'todos' }">

@@ -24,15 +24,14 @@
 </template>
 
 <script>
+
 export default {
   name: "TodoItem",
   props: ["header", "date", "id"],
   computed: {
     status: {
       get: function () {
-        let todo = this.$store.getters.todos.filter(
-          (item) => item.id === this.id
-        );
+        let todo = this.$store.getters.todos.filter(item => item.id === this.id);
         return !todo[0].active;
       },
       set: function () {
