@@ -27,7 +27,7 @@ export default new Vuex.Store({
     },
     changeTodoStatus(state, id) {
       let index = state.todos.findIndex((item) => item.id == id);
-      Vue.set(state.todos[index], "active", !state.todos[index].active);
+      state.todos[index].active = !state.todos[index].active;
       localStorage.setItem("todos", JSON.stringify(state.todos));
     },
   },
